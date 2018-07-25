@@ -22,6 +22,14 @@ From [their paper](https://arxiv.org/abs/1804.01622) this is a visual example of
     * Write Python function pass image back
     * Create component to wait and recieve image to display to user
 
+## Local demo instructions
+
+```bash
+git clone https://github.com/jtloong/sg2im-demo.git
+cd sg2im-demo
+npm start
+```
+
 ## Relevant links for the project
 
 * https://github.com/google/sg2im
