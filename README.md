@@ -6,7 +6,7 @@ This web app will be built with React.js and Flask. My hope is that users can in
 
 From [their paper](https://arxiv.org/abs/1804.01622) this is a visual example of how it works:
 
-![alt text](images/model-example.png)
+![alt text](README_images/model-example.png)
 
 ## Things to do
 
