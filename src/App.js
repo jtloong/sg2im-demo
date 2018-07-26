@@ -21,8 +21,25 @@ class App extends Component {
 
   addObjects = (object) => {
       this.state.scene_graph.objects.push(object);
-      console.log(this.state.scene_graph);
+      // console.log(this.state.scene_graph);
       this.forceUpdate();
+  }
+
+  addRelation = (input) => {
+    // console.log(input)
+    switch(input.position){
+      case 0:
+        this.state.scene_graph.relationships[0][0] = input.index;
+        break;
+      case 1:
+        this.state.scene_graph.relationships[0][1] = input.value;
+        break;
+      case 2:
+        this.state.scene_graph.relationships[0][2] = input.index;
+        break;
+    }
+    console.log(this.state.scene_graph);
+    this.forceUpdate();
   }
 
   render() {
@@ -38,7 +55,7 @@ class App extends Component {
         <p className="intro">
           Use the widgets below to create relationships between your objects.
         </p>
-        <RelationOrdering objectList={this.state.scene_graph.objects}/>
+        <RelationOrdering callbackFromParent={this.addRelation} objectList={this.state.scene_graph.objects}/>
       </div>
     );
   }
