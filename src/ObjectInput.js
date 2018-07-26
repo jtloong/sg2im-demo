@@ -16,8 +16,7 @@ class ObjectInput extends React.Component {
 
   handleSubmit(event) {
     // console.log(this.state.value);
-    this.props.scene_graph.objects.push(this.state.value);
-    console.log(this.props.scene_graph);
+    this.props.callbackFromParent(this.state.value);
     event.preventDefault();
   }
 

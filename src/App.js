@@ -4,12 +4,23 @@ import './css/App.css';
 
 
 class App extends Component {
-  render() {
-    var scene_graph = {
-        "objects": [],
-        "relationships": []
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      scene_graph : {
+          "objects": [],
+          "relationships": []
+      }
+    };
+  }
 
+
+  addObjects = (object) => {
+      this.state.scene_graph.objects.push(object);
+      console.log(this.state.scene_graph);
+  }
+
+  render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -18,9 +29,9 @@ class App extends Component {
         <p className="intro">
           Welcome to the sg2im web demo! Use the input form below to enter objects you would like to visulize.
         </p>
-        <ObjectInput scene_graph={scene_graph}/>
+        <ObjectInput callbackFromParent={this.addObjects}/>
         <p className="intro">
-          Add 
+          Add
         </p>
       </div>
     );
