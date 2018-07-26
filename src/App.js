@@ -11,7 +11,9 @@ class App extends Component {
     this.state = {
       scene_graph : {
           "objects": [],
-          "relationships": []
+          "relationships": [
+            [null, null, null]
+          ]
       }
     };
   }

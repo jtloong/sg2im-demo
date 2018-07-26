@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import Select from 'react-select';
 
+  const relation_options = ["above", "standing on", "by", "behind", "in", "on", "below"];
 
 class RelationOrdering extends React.Component {
   state = {
@@ -10,28 +11,38 @@ class RelationOrdering extends React.Component {
 
   handleChange = (selectedOption) => {
     this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+    console.log(selectedOption);
+    var selection = selectedOption.value, position = selectedOption.position;
+    switch(position){
+      case 0:
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+    }
   }
 
   render() {
-    const relation_options = ["above", "standing on", "by", "behind", "in", "on", "below"];
+
     const { selectedOption } = this.state;
-    const options = [];
+    const objects_0 = [], objects_1 = [];
     const relationships = [];
-    relation_options.map(function(relation){ return relationships.push({ value: relation, label: relation})});
-    this.props.objectList.map(function(object){ return options.push({ value: object, label: object})});
-    console.log(options);
+    relation_options.map(function(relation){ return relationships.push({ value: relation, label: relation, position: 1})});
+    this.props.objectList.map(function(object){ return objects_0.push({ value: object, label: object, position: 0})});
+    this.props.objectList.map(function(object){ return objects_1.push({ value: object, label: object, position: 2})});
+    // console.log(options);
 
     return (
       <div class='relation_row'>
         <Select
-          placeholder = { 'Object'}
+          placeholder = { 'Object' }
           value={selectedOption}
           onChange={this.handleChange}
-          options={options}
+          options={objects_0}
         />
         <Select
-          placeholder = { 'Relationship'}
+          placeholder = { 'Relationship' }
           value={selectedOption}
           onChange={this.handleChange}
           options={relationships}
@@ -40,7 +51,7 @@ class RelationOrdering extends React.Component {
           placeholder = { 'Object'}
           value={selectedOption}
           onChange={this.handleChange}
-          options={options}
+          options={objects_1}
         />
       </div>
     );
