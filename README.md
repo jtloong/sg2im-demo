@@ -11,7 +11,7 @@ From [their paper](https://arxiv.org/abs/1804.01622) this is a visual example of
 ## Things to do
 
 1. Use React components to save users objects and orders of relation (In Progress)
-    * Function to save objects inputed from user to global scene graph
+    * Function to save objects inputed from user to global scene graph ✔️
     * Function to add new objection relation rule components
     * Save object relations to global scene graph state
 2. Write a Flask endpoint to receive scene graphs from React front end & write Ajax function to pass info
