@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ObjectInput from './ObjectInput';
+import RelationOrdering from './RelationOrdering';
 import './css/App.css';
 
 
@@ -18,6 +19,7 @@ class App extends Component {
   addObjects = (object) => {
       this.state.scene_graph.objects.push(object);
       console.log(this.state.scene_graph);
+      this.forceUpdate();
   }
 
   render() {
@@ -31,8 +33,9 @@ class App extends Component {
         </p>
         <ObjectInput callbackFromParent={this.addObjects}/>
         <p className="intro">
-          Add
+          Use the widgets below to create relationships between your objects.
         </p>
+        <RelationOrdering objectList={this.state.scene_graph.objects}/>
       </div>
     );
   }
