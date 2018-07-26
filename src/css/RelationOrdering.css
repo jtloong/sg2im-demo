@@ -1,4 +1,9 @@
 .relation_row{
   height: 25px;
-  display: inline;
+  text-align: center;
+}
+
+.css-10nd86i{
+  width: 200px;
+  display: inline-block;
 }

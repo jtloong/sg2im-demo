@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ObjectInput from './ObjectInput';
 import RelationOrdering from './RelationOrdering';
 import './css/App.css';
+import './css/RelationOrdering.css';
 
 
 class App extends Component {
