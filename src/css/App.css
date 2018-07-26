@@ -30,3 +30,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.relation_container{
+  height: 50px;
+  display: table;
+  margin: 0 auto;
+
+}
+
+.relation_container p{
+  display: inline-block;
+  width: 320px;
+  display: table-cell;
+}

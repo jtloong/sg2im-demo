@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import ObjectInput from './ObjectInput';
 import RelationOrdering from './RelationOrdering';
+import AddOrderElement from './AddOrderElement';
 import './css/App.css';
 import './css/RelationOrdering.css';
+import './css/AddOrderElement.css';
 
 
 class App extends Component {
@@ -52,9 +54,13 @@ class App extends Component {
           Welcome to the sg2im web demo! Use the input form below to enter objects you would like to visulize.
         </p>
         <ObjectInput callbackFromParent={this.addObjects}/>
-        <p className="intro">
-          Use the widgets below to create relationships between your objects.
-        </p>
+        <div className='relation_container'>
+          <p className="intro">
+            Use the widgets below to create relationships between your objects.
+          </p>
+          <AddOrderElement />
+        </div>
+
         <RelationOrdering callbackFromParent={this.addRelation} objectList={this.state.scene_graph.objects}/>
       </div>
     );
