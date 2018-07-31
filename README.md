@@ -36,3 +36,4 @@ npm start
 * https://github.com/facebook/create-react-app
 * https://medium.com/@ruthmpardee/passing-data-between-react-components-103ad82ebd17
 * https://github.com/JedWatson/react-select
+* https://testdriven.io/asynchronous-tasks-with-flask-and-redis-queue

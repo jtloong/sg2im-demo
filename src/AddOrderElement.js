@@ -16,13 +16,13 @@ class AddOrderElement extends React.Component {
 
   handleSubmit(event) {
     // console.log(this.state.value);
-    this.props.callbackFromParent(this.state.value);
+    console.log('Hello');
     event.preventDefault();
   }
 
   render() {
     return (
-      <button class="add_button">+</button>
+      <button onClick={this.handleSubmit} class="add_button">+</button>
     );
   }
 }
