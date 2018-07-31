@@ -37,3 +37,5 @@ npm start
 * https://medium.com/@ruthmpardee/passing-data-between-react-components-103ad82ebd17
 * https://github.com/JedWatson/react-select
 * https://testdriven.io/asynchronous-tasks-with-flask-and-redis-queue
+* https://stackoverflow.com/questions/22565808/run-django-and-node-in-a-heroku-app-simultaneously
+* https://blog.heroku.com/heroku-django-node
