@@ -40,7 +40,6 @@ class RelationOrdering extends React.Component {
     relation_options.map(function(relation, index){ return relationships.push({ value: relation, label: relation, position: 1, index: index})});
     this.props.objectList.map(function(object, index){ return objects_0.push({ value: object, label: object, position: 0, index: index})});
     this.props.objectList.map(function(object, index){ return objects_1.push({ value: object, label: object, position: 2, index: index})});
-    // console.log(options);
 
     return (
       <div class='relation_row'>
@@ -66,5 +65,7 @@ class RelationOrdering extends React.Component {
     );
   }
 }
+
+
 
 export default RelationOrdering;

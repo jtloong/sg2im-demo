@@ -6,7 +6,6 @@ import './css/App.css';
 import './css/RelationOrdering.css';
 import './css/AddOrderElement.css';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,10 +15,11 @@ class App extends Component {
           "relationships": [
             [null, null, null]
           ]
-      }
+      },
+
+      num_rules : [0]
     };
   }
-
 
   addObjects = (object) => {
       this.state.scene_graph.objects.push(object);
@@ -44,7 +44,21 @@ class App extends Component {
     this.forceUpdate();
   }
 
+  addRule = (buttonPress) => {
+    console.log('Adding new element');
+    console.log(buttonPress);
+    var rules = this.state.num_rules;
+    var new_key = rules[rules.length] + 1
+    rules.push(new_key);
+    this.setState({num_rules: rules});
+    this.forceUpdate();
+    console.log(this.state.num_rules);
+  }
+
   render() {
+    var items = this.state.num_rules.map(function(instance) {
+      return <RelationOrdering key={instance} callbackFromParent={this.addRelation} objectList={this.state.scene_graph.objects}/>
+    }, this);
     return (
       <div className="App">
         <header className="App-header">
@@ -58,10 +72,10 @@ class App extends Component {
           <p className="intro">
             Use the widgets below to create relationships between your objects.
           </p>
-          <AddOrderElement />
+          <AddOrderElement callbackFromParent={this.addRule} />
         </div>
 
-        <RelationOrdering callbackFromParent={this.addRelation} objectList={this.state.scene_graph.objects}/>
+        {items}
       </div>
     );
   }

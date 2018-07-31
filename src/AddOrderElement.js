@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 class AddOrderElement extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,12 +16,15 @@ class AddOrderElement extends React.Component {
   handleSubmit(event) {
     // console.log(this.state.value);
     console.log('Hello');
+    this.props.callbackFromParent('True');
     event.preventDefault();
   }
 
   render() {
     return (
-      <button onClick={this.handleSubmit} class="add_button">+</button>
+      <div>
+        <button onClick={this.handleSubmit} class="add_button">+</button>
+      </div>
     );
   }
 }
