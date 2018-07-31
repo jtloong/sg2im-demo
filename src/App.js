@@ -45,8 +45,6 @@ class App extends Component {
   }
 
   addRule = (buttonPress) => {
-    console.log('Adding new element');
-    console.log(buttonPress);
     var rules = this.state.num_rules;
     var new_key = rules[rules.length] + 1
     rules.push(new_key);
@@ -59,6 +57,7 @@ class App extends Component {
     var items = this.state.num_rules.map(function(instance) {
       return <RelationOrdering key={instance} callbackFromParent={this.addRelation} objectList={this.state.scene_graph.objects}/>
     }, this);
+
     return (
       <div className="App">
         <header className="App-header">
@@ -74,7 +73,6 @@ class App extends Component {
           </p>
           <AddOrderElement callbackFromParent={this.addRule} />
         </div>
-
         {items}
       </div>
     );
