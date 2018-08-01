@@ -5,6 +5,7 @@ import AddOrderElement from './AddOrderElement';
 import './css/App.css';
 import './css/RelationOrdering.css';
 import './css/AddOrderElement.css';
+import './css/ObjectInput.css';
 
 class App extends Component {
   constructor(props) {
