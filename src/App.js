@@ -77,7 +77,7 @@ class App extends Component {
           <AddOrderElement callbackFromParent={this.addRule} />
         </div>
         {items}
-        <SubmitSceneGraph />
+        <SubmitSceneGraph scene_graph={this.state.scene_graph} />
       </div>
     );
   }
