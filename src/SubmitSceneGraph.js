@@ -11,7 +11,28 @@ class SubmitSceneGraph extends React.Component {
 
   handleSubmit(event) {
     console.log(this.props.scene_graph);
-    // this.props.callbackFromParent(this.state.value);
+    var scene_graph = this.props.scene_graph;
+
+    function createCORSRequest(method, url){
+      var xhr = new XMLHttpRequest();
+      if ("withCredentials" in xhr){
+          xhr.open(method, url, true);
+      } else if (typeof XDomainRequest != "undefined"){
+          xhr = new XDomainRequest();
+          xhr.open(method, url);
+      } else {
+          xhr = null;
+      }
+      return xhr;
+    }
+
+    var request = createCORSRequest("post", 'http://127.0.0.1:5000/generate');
+    if (request){
+        request.onload = function() {
+            console.log("Connection success!");
+        };
+        request.send(scene_graph);
+    }
     event.preventDefault();
   }
 
