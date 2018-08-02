@@ -1,6 +1,8 @@
 #!flask/bin/python
 from flask import Flask
+from flask import request
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -13,13 +15,16 @@ def index():
 def generate():
     error = None
     print("Hello")
-    print(request)
     if request.method == 'POST':
-        scene_graph = request.text
+        print("It is POST")
+        print(request.content_type)
+        scene_graph = request.json
         print(scene_graph)
+        print(scene_graph['objects'])
+        print(scene_graph['relationships'])
     # the code below is executed if the request method
     # was GET or the credentials were invalid
-    return scene_graph
+    return "Success!"
 
 if __name__ == '__main__':
     app.run(debug=True)

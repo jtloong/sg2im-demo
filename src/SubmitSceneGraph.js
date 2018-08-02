@@ -31,7 +31,8 @@ class SubmitSceneGraph extends React.Component {
         request.onload = function() {
             console.log("Connection success!");
         };
-        request.send(scene_graph);
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.send(JSON.stringify(scene_graph));
     }
     event.preventDefault();
   }
