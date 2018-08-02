@@ -39,3 +39,4 @@ npm start
 * https://testdriven.io/asynchronous-tasks-with-flask-and-redis-queue
 * https://stackoverflow.com/questions/22565808/run-django-and-node-in-a-heroku-app-simultaneously
 * https://blog.heroku.com/heroku-django-node
+* http://www.flaskapi.org/api-guide/status-codes/
