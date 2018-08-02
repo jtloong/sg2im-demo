@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import ObjectInput from './ObjectInput';
 import RelationOrdering from './RelationOrdering';
 import AddOrderElement from './AddOrderElement';
+import SubmitSceneGraph from './SubmitSceneGraph';
 import './css/App.css';
 import './css/RelationOrdering.css';
 import './css/AddOrderElement.css';
 import './css/ObjectInput.css';
+import './css/SubmitSceneGraph.css';
 
 class App extends Component {
   constructor(props) {
@@ -75,6 +77,7 @@ class App extends Component {
           <AddOrderElement callbackFromParent={this.addRule} />
         </div>
         {items}
+        <SubmitSceneGraph />
       </div>
     );
   }
