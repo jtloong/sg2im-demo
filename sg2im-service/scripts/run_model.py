@@ -62,7 +62,8 @@ def main(args):
   # Load the scene graphs
   with open(args.scene_graphs_json, 'r') as f:
     scene_graphs = json.load(f)
-
+  print(type(scene_graphs))
+  print('Loaded graph!')
   # Run the model forward
   with torch.no_grad():
     imgs, boxes_pred, masks_pred, _ = model.forward_json(scene_graphs)
@@ -74,15 +75,14 @@ def main(args):
     img_path = os.path.join(args.output_dir, 'img%06d.png' % i)
     imwrite(img_path, img_np)
 
+  print('Drawing now!')
   # Draw the scene graphs
   if args.draw_scene_graphs == 1:
     for i, sg in enumerate(scene_graphs):
       sg_img = vis.draw_scene_graph(sg['objects'], sg['relationships'])
       sg_img_path = os.path.join(args.output_dir, 'sg%06d.png' % i)
       imwrite(sg_img_path, sg_img)
-
-
+  print('Done!')
 if __name__ == '__main__':
   args = parser.parse_args()
   main(args)
-

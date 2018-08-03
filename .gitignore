@@ -1,5 +1,11 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+/env
+/sg2im-service/env
+/sg2im-service/scripts/__pycache__
+/sg2im-service/sg2im/__pycache__
+/sg2im-service/sg2im/data/__pycache__
+
 # models
 *.pt
 
