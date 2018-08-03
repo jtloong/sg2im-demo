@@ -36,7 +36,11 @@ def generate():
             json.dump(scene_graph, fp)
         args = argumentBuilder()
         args.scene_graphs_json = scene_graph
-        main(args)
+        model_build = main(args)
+        if (model_build == True):
+            print('Built')
+        else:
+            print('Fail')
     # the code below is executed if the request method
     # was GET or the credentials were invalid
     return "Success!"

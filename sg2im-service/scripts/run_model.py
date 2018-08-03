@@ -33,58 +33,61 @@ parser.add_argument('--device', default='gpu', choices=['cpu', 'gpu'])
 
 
 def main(args):
-  if not os.path.isfile(args.checkpoint):
-    print('ERROR: Checkpoint file "%s" not found' % args.checkpoint)
-    print('Maybe you forgot to download pretraind models? Try running:')
-    print('bash scripts/download_models.sh')
-    return
+    try:
+        if not os.path.isfile(args.checkpoint):
+            print('ERROR: Checkpoint file "%s" not found' % args.checkpoint)
+            print('Maybe you forgot to download pretraind models? Try running:')
+            print('bash scripts/download_models.sh')
+            return
 
-  if not os.path.isdir(args.output_dir):
-    print('Output directory "%s" does not exist; creating it' % args.output_dir)
-    os.makedirs(args.output_dir)
+        if not os.path.isdir(args.output_dir):
+            print('Output directory "%s" does not exist; creating it' % args.output_dir)
+            os.makedirs(args.output_dir)
 
-  if args.device == 'cpu':
-    device = torch.device('cpu')
-  elif args.device == 'gpu':
-    device = torch.device('cuda:0')
-    if not torch.cuda.is_available():
-      print('WARNING: CUDA not available; falling back to CPU')
-      device = torch.device('cpu')
+        if args.device == 'cpu':
+            device = torch.device('cpu')
+        elif args.device == 'gpu':
+            device = torch.device('cuda:0')
+        if not torch.cuda.is_available():
+            print('WARNING: CUDA not available; falling back to CPU')
+            device = torch.device('cpu')
 
-  # Load the model, with a bit of care in case there are no GPUs
-  map_location = 'cpu' if device == torch.device('cpu') else None
-  checkpoint = torch.load(args.checkpoint, map_location=map_location)
-  model = Sg2ImModel(**checkpoint['model_kwargs'])
-  model.load_state_dict(checkpoint['model_state'])
-  model.eval()
-  model.to(device)
+      # Load the model, with a bit of care in case there are no GPUs
+        map_location = 'cpu' if device == torch.device('cpu') else None
+        checkpoint = torch.load(args.checkpoint, map_location=map_location)
+        model = Sg2ImModel(**checkpoint['model_kwargs'])
+        model.load_state_dict(checkpoint['model_state'])
+        model.eval()
+        model.to(device)
 
-  # Load the scene graphs
-  scene_graphs = args.scene_graphs_json
-  # with open(args.scene_graphs_json, 'r') as f:
-  #   scene_graphs = json.load(f)
-  print(type(scene_graphs))
-  print('Loaded graph!')
-  # Run the model forward
-  with torch.no_grad():
-    imgs, boxes_pred, masks_pred, _ = model.forward_json(scene_graphs)
-  imgs = imagenet_deprocess_batch(imgs)
+        # Load the scene graphs
+        scene_graphs = args.scene_graphs_json
+        # with open(args.scene_graphs_json, 'r') as f:
+        #   scene_graphs = json.load(f)
+        print(type(scene_graphs))
+        print('Loaded graph!')
+        # Run the model forward
+        with torch.no_grad():
+            imgs, boxes_pred, masks_pred, _ = model.forward_json(scene_graphs)
+        imgs = imagenet_deprocess_batch(imgs)
 
-  # Save the generated images
-  for i in range(imgs.shape[0]):
-    img_np = imgs[i].numpy().transpose(1, 2, 0)
-    img_path = os.path.join(args.output_dir, 'img%06d.png' % i)
-    imwrite(img_path, img_np)
+      # Save the generated images
+        for i in range(imgs.shape[0]):
+            img_np = imgs[i].numpy().transpose(1, 2, 0)
+            img_path = os.path.join(args.output_dir, 'img%06d.png' % i)
+            imwrite(img_path, img_np)
 
-  print('Drawing now!')
-  # Draw the scene graphs
-  if args.draw_scene_graphs == 1:
-    for i, sg in enumerate(scene_graphs):
-      sg_img = vis.draw_scene_graph(sg['objects'], sg['relationships'])
-      sg_img_path = os.path.join(args.output_dir, 'sg%06d.png' % i)
-      imwrite(sg_img_path, sg_img)
-  print('Done!')
-  
+        print('Drawing now!')
+      # Draw the scene graphs
+        if args.draw_scene_graphs == 1:
+            for i, sg in enumerate(scene_graphs):
+                sg_img = vis.draw_scene_graph(sg['objects'], sg['relationships'])
+                sg_img_path = os.path.join(args.output_dir, 'sg%06d.png' % i)
+                imwrite(sg_img_path, sg_img)
+        return True
+    except():
+        return False
+
 if __name__ == '__main__':
-  args = parser.parse_args()
-  main(args)
+    args = parser.parse_args()
+    main(args)
