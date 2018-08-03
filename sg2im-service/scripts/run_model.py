@@ -60,8 +60,9 @@ def main(args):
   model.to(device)
 
   # Load the scene graphs
-  with open(args.scene_graphs_json, 'r') as f:
-    scene_graphs = json.load(f)
+  scene_graphs = args.scene_graphs_json
+  # with open(args.scene_graphs_json, 'r') as f:
+  #   scene_graphs = json.load(f)
   print(type(scene_graphs))
   print('Loaded graph!')
   # Run the model forward
@@ -83,6 +84,7 @@ def main(args):
       sg_img_path = os.path.join(args.output_dir, 'sg%06d.png' % i)
       imwrite(sg_img_path, sg_img)
   print('Done!')
+  
 if __name__ == '__main__':
   args = parser.parse_args()
   main(args)

@@ -35,7 +35,7 @@ def generate():
         with open('scene_graphs/scene_graph.json', 'w') as fp:
             json.dump(scene_graph, fp)
         args = argumentBuilder()
-        args.scene_graphs_json = 'scene_graphs/scene_graph.json'
+        args.scene_graphs_json = scene_graph
         main(args)
     # the code below is executed if the request method
     # was GET or the credentials were invalid
