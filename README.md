@@ -24,10 +24,17 @@ From [their paper](https://arxiv.org/abs/1804.01622) this is a visual example of
 
 ## Local demo instructions
 
+Open a terminal and do the following:
+
 ```bash
 git clone https://github.com/jtloong/sg2im-demo.git
 cd sg2im-demo
 npm start
+```
+Now open a seperate terminal and launch:
+
+```bash
+bash run.sh
 ```
 
 ## Relevant links for the project
