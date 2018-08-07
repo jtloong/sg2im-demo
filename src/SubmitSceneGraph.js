@@ -26,13 +26,22 @@ class SubmitSceneGraph extends React.Component {
       return xhr;
     }
 
+    function get_image(){
+      
+    }
+
     var request = createCORSRequest("post", 'http://127.0.0.1:5000/generate');
     if (request){
         request.onload = function() {
             console.log("Connection success!");
+            console.log(request.status);
+            if (request.status == 201){
+              get_image();
+            }
         };
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         request.send(JSON.stringify(scene_graph));
+
     }
     event.preventDefault();
   }
