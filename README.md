@@ -2,7 +2,7 @@
 
 This is my attempt at making a web based demo of Google's [sg2im](https://github.com/google/sg2im), an end-to-end neural network model that converts a scene graph into a human recognizable image. My hope is to use their pretrained model to allow users to generate images themselves.
 
-This web app will be built with React.js and Flask. My hope is that users can input potential objects (ie. sky, grass, shape) and their orders of relation so that they can create realistic images from the pre-trained model on the fly.
+This web app will be built with React.js and Flask. My hope is that users can input potential objects (ie. sky, grass, shape) and their orders of relation so that they can create realistic images from the pre-trained model on the fly. This repo will contain the code for running the React.js frontend, [this other repo](https://github.com/jtloong/sg2im-api) contains the Flask service for serving the generated photos.
 
 From [their paper](https://arxiv.org/abs/1804.01622) this is a visual example of how it works:
 
@@ -24,18 +24,14 @@ From [their paper](https://arxiv.org/abs/1804.01622) this is a visual example of
 
 ## Local demo instructions
 
-Open a terminal and do the following:
+To deploy the frontend, open a terminal and do the following:
 
 ```bash
 git clone https://github.com/jtloong/sg2im-demo.git
 cd sg2im-demo
 npm start
 ```
-Now open a seperate terminal and launch:
-
-```bash
-bash run.sh
-```
+If you want to have the full application, you'll need to clone the Flask API [here](https://github.com/jtloong/sg2im-api) and follow the demo instructions there. 
 
 ## Relevant links for the project
 
