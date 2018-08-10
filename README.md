@@ -43,3 +43,4 @@ If you want to have the full application, you'll need to clone the Flask API [he
 * https://stackoverflow.com/questions/22565808/run-django-and-node-in-a-heroku-app-simultaneously
 * https://blog.heroku.com/heroku-django-node
 * http://www.flaskapi.org/api-guide/status-codes/
+* https://medium.com/@dkhd/handling-multiple-requests-on-flask-60208eacc154
