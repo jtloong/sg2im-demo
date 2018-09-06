@@ -8,12 +8,18 @@ import './css/RelationOrdering.css';
 import './css/AddOrderElement.css';
 import './css/ObjectInput.css';
 import './css/SubmitSceneGraph.css';
+var gen = require('random-seed');
 
 class App extends Component {
   constructor(props) {
     super(props);
+    var seed = String(new Date());
+    var rand = gen.create(seed);
+    var id = rand(100000000000);
+
     this.state = {
       scene_graph : {
+          "visitor_id" : id,
           "objects": [],
           "relationships": [
             [null, null, null]
@@ -23,6 +29,7 @@ class App extends Component {
       num_rules : [0]
     };
   }
+
 
   addObjects = (object) => {
       this.state.scene_graph.objects.push(object);
@@ -60,6 +67,8 @@ class App extends Component {
     var items = this.state.num_rules.map(function(instance) {
       return <RelationOrdering key={instance} callbackFromParent={this.addRelation} objectList={this.state.scene_graph.objects}/>
     }, this);
+
+
 
     return (
       <div className="App">
