@@ -44,3 +44,4 @@ If you want to have the full application, you'll need to clone the Flask API [he
 * http://www.flaskapi.org/api-guide/status-codes/
 * https://medium.com/@dkhd/handling-multiple-requests-on-flask-60208eacc154
 * https://stackoverflow.com/questions/49754413/how-to-accept-concurrent-request-using-gunicorn-for-flask-api
+* https://www.patricksoftwareblog.com/receiving-files-with-a-flask-rest-api/

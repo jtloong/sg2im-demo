@@ -27,7 +27,18 @@ class SubmitSceneGraph extends React.Component {
     }
 
     function get_image(){
-      
+      var request = createCORSRequest("get", 'http://127.0.0.1:5000/retrieve');
+      if (request){
+        request.onload = function(e) {
+            console.log("Connection success!");
+            console.log(this.status);
+            if (this.status == 200){
+              var blob = new Blob([this.response], {type: 'image/png'});
+            }
+        };
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.send(JSON.stringify(scene_graph));
+      }
     }
 
     var request = createCORSRequest("post", 'http://127.0.0.1:5000/generate');
@@ -41,8 +52,9 @@ class SubmitSceneGraph extends React.Component {
         };
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         request.send(JSON.stringify(scene_graph));
-
     }
+
+
     event.preventDefault();
   }
 
